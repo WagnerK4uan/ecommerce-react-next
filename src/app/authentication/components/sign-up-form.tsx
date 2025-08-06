@@ -1,7 +1,9 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import z from "zod";
 
 import { Button } from "@/src/components/ui/button";
@@ -22,15 +24,16 @@ import {
   FormMessage,
 } from "@/src/components/ui/form";
 import { Input } from "@/src/components/ui/input";
+import { authClient } from "@/src/lib/auth-client";
 
 const formSchema = z
   .object({
     nome: z.string("Digite seu nome").trim().min(1, "O nome é obrigatório"),
     email: z.email("Digite um e-mail válido"),
-    password: z.string().min(6, "A senha deve ter no mínimo 6 caracteres"),
+    password: z.string().min(8, "A senha deve ter no mínimo 8 caracteres"),
     passwordConfirmation: z
       .string()
-      .min(6, "A senha deve ter no mínimo 6 caracteres"),
+      .min(8, "A senha deve ter no mínimo 8 caracteres"),
   })
   .refine(
     (data) => {
@@ -45,6 +48,7 @@ const formSchema = z
 type FormValues = z.infer<typeof formSchema>;
 
 const SignUpForm = () => {
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -54,10 +58,29 @@ const SignUpForm = () => {
       passwordConfirmation: "",
     },
   });
-  function onSubmit(values: FormValues) {
-    console.log("Form foi submetido com sucesso!");
-    console.log(values);
+
+  async function onSubmit(values: FormValues) {
+    const {} = await authClient.signUp.email({
+      name: values.nome,
+      email: values.email,
+      password: values.password,
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/");
+        },
+        onError: (error) => {
+          if (error.error.code === "USER_ALREADY_EXISTS") {
+            toast.error("Email ou senha inválidos");
+            form.setError("email", {
+              message: "Email já foi cadastrado",
+            });
+          }
+          toast.error(error.error.message);
+        },
+      },
+    });
   }
+
   return (
     <>
       <Card>
