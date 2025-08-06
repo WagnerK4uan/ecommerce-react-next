@@ -10,7 +10,9 @@ const Home = async () => {
       variants: true,
     },
   });
-  console.log(products);
+
+  const categories = await db.query.categoryTable.findMany();
+
   return (
     <>
       <Header />
@@ -27,7 +29,7 @@ const Home = async () => {
         </div>
 
         <ProductList products={products} title="Mais vendidos" />
-        
+
         <div className="px-5">
           <Image
             src="/banner-02.jpg"
