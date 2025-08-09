@@ -4,10 +4,10 @@ import { toast } from "sonner";
 
 import { formatCentsToBRL } from "@/src/helpers/money";
 import { useDecreaseCartProduct } from "@/src/hooks/mutations/use-descrease-cart-product";
+import { useIncreaseCartProduct } from "@/src/hooks/mutations/use-increase-cart-product";
 import { useRemoveProductFromCart } from "@/src/hooks/mutations/use-remove-product-from-cart";
 
 import { Button } from "../ui/button";
-import { useIncreaseCartProduct } from "@/src/hooks/mutations/use-increase-cart-product";
 
 interface CartItemProps {
   id: string;
@@ -31,7 +31,8 @@ const CartItem = ({
   const removeProductFromCartMutation = useRemoveProductFromCart(id);
 
   const decreaseCartProductQuantityMutation = useDecreaseCartProduct(id);
-  const increaseCartProductQuantityMutation = useIncreaseCartProduct(productVariantId);
+  const increaseCartProductQuantityMutation =
+    useIncreaseCartProduct(productVariantId);
   const handleDeleteClicks = () => {
     removeProductFromCartMutation.mutate(undefined, {
       onSuccess: () => {

@@ -3,6 +3,7 @@
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { Separator } from "@radix-ui/react-separator";
 import { ShoppingBasketIcon } from "lucide-react";
+import Link from "next/link";
 
 import { formatCentsToBRL } from "@/src/helpers/money";
 import { useCart } from "@/src/hooks/queries/use-cart";
@@ -76,7 +77,9 @@ export const Cart = () => {
                 <p>{formatCentsToBRL(cart?.totalPriceInCents ?? 0)}</p>
               </div>
 
-              <Button className="mt-5 rounded-full">Finalizar compra</Button>
+              <Button className="mt-5 rounded-full">
+                <Link href={"/cart/identification"}>Finalizar compra</Link>
+              </Button>
             </div>
           )}
         </div>
