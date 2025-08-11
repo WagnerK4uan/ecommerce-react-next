@@ -3,7 +3,6 @@ import { redirect } from "next/navigation";
 
 import Footer from "@/src/components/common/footer";
 import { Header } from "@/src/components/common/header";
-import { Button } from "@/src/components/ui/button";
 import {
   Card,
   CardContent,
