@@ -3,7 +3,7 @@
 O **BEWEAR** é um ecommerce online focado na **experiência mobile**, oferecendo um design moderno e minimalista, pensado para facilitar a jornada de compra do usuário.  
 Este projeto foi desenvolvido com **React**, **Next.js**, **Drizzle ORM**, **PostgreSQL**, **Shadcn UI** e **autenticação via Google**.
 
-![Preview do BEWEAR]("")
+![Preview do BEWEAR](https://i.imgur.com/gp6G0UD.png)
 
 ---
 
@@ -67,15 +67,27 @@ npm run dev
 
 ## 📸 Preview
 
-### 🏠 Tela Inicial
-![Preview Home](docs/preview-home.png)
+### 🔐 Tela de Login e cadastro
+![Preview Login](https://i.imgur.com/jtYI0bb.png)
+![Preview Login](https://i.imgur.com/QYkWaQ8.png)
+
+---
+
+### 🏠 Tela Inicial 
+![Preview Home](https://i.imgur.com/4izabd7.png)
 
 ---
 
 ### 🛍️ Lista de Produtos
-![Preview Produtos](docs/preview-products.png)
+![Preview Produtos](https://i.imgur.com/qA9rB8b.png)
+
+---
+
+### Pagamento 💰
+![Preview Produtos](https://i.imgur.com/Zpb7ul2.png)
+![Preview Produtos](https://i.imgur.com/Yl9BbLw.png)
 
 ---
 
 ### 🛒 Carrinho de Compras
-![Preview Carrinho](docs/preview-cart.png)
+![Preview Carrinho](https://i.imgur.com/fDnFDb2.png)
